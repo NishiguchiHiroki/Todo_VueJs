@@ -1,6 +1,23 @@
-new Vue({
+var app = new Vue({
   el: "#app",
   data: {
-    message: "hello"
+    newItem: '',
+    todos: []
+  },
+  methods: {
+    addItem: function(event){
+      if(this.newItem == '') return;
+
+      var todo ={
+        item: this.newItem,
+        isDone: false
+      };
+      this.todos.push(todo);
+      this.newItem= "";
+    },
+    deleteItem: function(index){
+      //alert(index);
+      this.todos.splice(index,1)
+    }
   }
 })
